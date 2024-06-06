@@ -16,12 +16,12 @@ const App = () => {
       const newItems = Array.from({ length: itemsPerPage }, (_, i) => ({
         id: startIndex + i + 1,
         name: `Item ${startIndex + i + 1}`,
-      })).slice(0, Math.min(itemsPerPage, 100 - startIndex));
+      })).slice(0, Math.min(itemsPerPage, 1000 - startIndex));
 
       setItems((prevItems) => [...prevItems, ...newItems]);
-      setHasMore(endIndex < 100);
+      setHasMore(endIndex < 1000);
     },
-    [hasMore]
+    [hasMore],
   );
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const App = () => {
 
       if (node) observer.current.observe(node);
     },
-    [hasMore]
+    [hasMore],
   );
 
   return (
